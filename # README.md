@@ -19,5 +19,5 @@ El truco es la ilusión óptica *Pepper Ghost* creo que asi se escribe, pongo el
 - [ ] Conectar el la parte interna del celular para detectar movimiento.
 - [ ] Conectar las respuestas de la IA local.
 
-## 📸 Proceso y Pruebas
+## Proceso y Pruebas
 *(Aquí iré subiendo las fotos de la caja y del holograma encendido cuando lo arme tengo un mes para entregar el archivo).*
