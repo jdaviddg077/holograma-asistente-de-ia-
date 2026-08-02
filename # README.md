@@ -20,4 +20,17 @@ El truco es la ilusión óptica *Pepper Ghost* creo que asi se escribe, pongo el
 - [ ] Conectar las respuestas de la IA local.
 
 ## Proceso y Pruebas
-*(Aquí iré subiendo las fotos de la caja y del holograma encendido cuando lo arme tengo un mes para entregar el archivo).*
+*(Aquí iré subiendo las fotos de la caja y del holograma encendido cuando lo arme tengo un mes para entregar el archivo estan en ingles por que en el foro la mayoria de personas hablan ingles).*
+- Hello! Day 1 of the hologram assistant project. Today I’m drafting the project plans to give it its final shape; I’ll also be creating digital versions. This is just the first one—there are three in total—and I’ll be posting them later.
+- Day 1: We modeled the base of the hologram where the objects will be placed for it to work
+- <img width="675" height="900" alt="image" src="https://github.com/user-attachments/assets/d70b81af-4012-4712-8cb5-cd8c8aaf0752" />
+
+- Day 2: Today I started doing a bit of everything. I began by practicing how to create HTML, then I worked on fixing the model, and after that, I started creating the first animation for the assistant I chose a Minecraft character. Here are the videos.
+- <img width="485" height="880" alt="image" src="https://github.com/user-attachments/assets/805ce809-4172-468a-80e6-a885ae29322c" />
+-<img width="1600" height="839" alt="image" src="https://github.com/user-attachments/assets/4ca44be8-2b91-48e8-8a8e-001e42c941e8" />
+-<img width="1600" height="732" alt="image" src="https://github.com/user-attachments/assets/b092de99-632e-4933-96ff-c9bd51a8a471" />
+-Day 3: Today I animated our second hologram assistant character, but I don’t know what name to give it. If anyone has any ideas for the characters, please write them in the comments.
+-<img width="508" height="900" alt="image" src="https://github.com/user-attachments/assets/7f8c87ba-6e86-4783-8d4b-2a8a7394a6b1" />
+-<img width="1600" height="857" alt="image" src="https://github.com/user-attachments/assets/aa9d9618-2a9e-436b-bc3b-9e1de078140b" />
+por el momento es todo lo que he hecho los mantendre en contacto :)
+
