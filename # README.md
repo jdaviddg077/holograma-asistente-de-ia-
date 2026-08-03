@@ -32,5 +32,5 @@ El truco es la ilusión óptica *Pepper Ghost* creo que asi se escribe, pongo el
 -Day 3: Today I animated our second hologram assistant character, but I don’t know what name to give it. If anyone has any ideas for the characters, please write them in the comments.
 -<img width="508" height="900" alt="image" src="https://github.com/user-attachments/assets/7f8c87ba-6e86-4783-8d4b-2a8a7394a6b1" />
 -<img width="1600" height="857" alt="image" src="https://github.com/user-attachments/assets/aa9d9618-2a9e-436b-bc3b-9e1de078140b" />
-por el momento es todo lo que he hecho los mantendre en contacto :)
-
+-Day 4 of the hologram assistant project: today we built the base of the webpage and added some more animation. Yesterday I asked for a name for the female character, and the winner was @puerta, who suggested “Sisi”—so that’s her new name. Now we need a name for the Minecraft character.
+-<img width="1600" height="860" alt="image" src="https://github.com/user-attachments/assets/2b4336f6-75da-4721-bbb8-00db39b2a19f" />
