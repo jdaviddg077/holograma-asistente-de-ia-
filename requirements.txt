@@ -1,0 +1,431 @@
+================================================================================
+
+GUÍA COMPLETA: REQUISITOS DEL PROYECTO Y CONEXIÓN DE IA A HTML
+
+Proyecto: Asistente Holográfico con IA
+
+================================================================================
+
+
+
+--------------------------------------------------------------------------------
+
+PARTE 1: TODO LO QUE SE NECESITA PARA QUE EL PROYECTO FUNCIONE
+
+--------------------------------------------------------------------------------
+
+
+
+1. MATERIALES FÍSICOS (HARDWARE Y ESTRUCTURA)
+
+   - Celular / Smartphone: Servirá como la pantalla que proyecta la interfaz.
+
+   - Lámina de Acetato Transparente: Para armar la pirámide reflectora (efecto Pepper's Ghost).
+
+   - Cartón o Madera: Para construir el soporte base que mantiene el celular a una distancia fija.
+
+   - Tijeras / Bisturí, Regla y Pegamento / Silicona: Para ensamblar la pirámide y la base.
+
+
+
+2. SOFTWARE Y ENTORNO DE DESARROLLO
+
+   - Python 3.9+: Entorno backend para procesar la IA.
+
+   - Editor de Código: Visual Studio Code u otro.
+
+   - Navegador Web: Chrome, Edge o Safari en el celular o computadora.
+
+   - Ollama (o API de OpenAI / Groq): Proveedor del modelo de IA (LLM).
+
+
+
+3. LIBRERÍAS DE PYTHON (BACKEND)
+
+   - fastapi: Framework ligero para crear la API REST.
+
+   - uvicorn: Servidor web ASGI para ejecutar FastAPI.
+
+   - requests / httpx / langchain: Para comunicarse con el modelo de IA.
+
+   - python-dotenv: Para manejar claves de API o variables de entorno.
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+PARTE 2: ¿CÓMO SE CONECTA UNA IA A UNA PÁGINA HTML? (ARQUITECTURA)
+
+--------------------------------------------------------------------------------
+
+
+
+La conexión NO se hace directamente desde HTML a la IA por razones de seguridad
+
+y procesamiento. Se utiliza una arquitectura de 3 capas:
+
+
+
+  [ FRONTEND ]             [ BACKEND ]                [ MODELO IA ]
+
+  HTML + CSS + JS  <--->  Servidor Python  <-------->  Ollama / OpenAI / API
+
+  (Proyecta en celular)    (FastAPI / Flask)           (Genera respuestas)
+
+
+
+1. El usuario habla o escribe en la página web (HTML / JS).
+
+2. JavaScript (Fetch API) envía el mensaje como JSON al servidor Python via POST.
+
+3. El servidor Python recibe la petición, procesa el texto y consulta a la IA.
+
+4. La IA responde al servidor Python con el texto generado.
+
+5. Python devuelve esa respuesta en formato JSON a JavaScript.
+
+6. JavaScript actualiza el HTML y activa animaciones o voz en la pantalla.
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+PARTE 3: CÓDIGO DE EJEMPLO PASO A PASO
+
+--------------------------------------------------------------------------------
+
+
+
+----- PASO A: BACKEND EN PYTHON (main.py) -----
+
+
+
+from fastapi import FastAPI
+
+from fastapi.middleware.cors import CORSMiddleware
+
+from pydantic import BaseModel
+
+import requests
+
+
+
+app = FastAPI()
+
+
+
+# Permitir conexiones desde cualquier origen (útil para probar en el celular)
+
+app.add_middleware(
+
+    CORSMiddleware,
+
+    allow_origins=["*"],
+
+    allow_credentials=True,
+
+    allow_methods=["*"],
+
+    allow_headers=["*"],
+
+)
+
+
+
+class PromptRequest(BaseModel):
+
+    prompt: str
+
+
+
+@app.post("/chat")
+
+async def chat_with_ai(data: PromptRequest):
+
+    # Ejemplo de llamada a servidor local Ollama (Llama 3 / Mistral)
+
+    try:
+
+        response = requests.post(
+
+            "http://localhost:11434/api/generate",
+
+            json={
+
+                "model": "llama3",
+
+                "prompt": f"Responde como una asistente holográfica llamada Cortana. Sé breve. Usuario: {data.prompt}",
+
+                "stream": False
+
+            }
+
+        )
+
+        ai_text = response.json().get("response", "No pude procesar la respuesta.")
+
+        return {"response": ai_text}
+
+    except Exception as e:
+
+        return {"response": f"Error de conexión con la IA: {str(e)}"}
+
+
+
+if __name__ == "__main__":
+
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+
+
+
+
+----- PASO B: FRONTEND HTML (index.html) -----
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Asistente Holográfica</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="hologram-container">
+
+        <!-- El fondo DEBE ser completamente negro (#000) para el efecto óptico -->
+
+        <div id="avatar" class="avatar-glow"></div>
+
+        <div id="ai-response" class="text-display">Esperando instrucción...</div>
+
+        
+
+        <div class="controls">
+
+            <input type="text" id="userInput" placeholder="Escribe un mensaje...">
+
+            <button onclick="sendMessage()">Enviar</button>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+----- PASO C: ESTILOS CSS PARA HOLOGRAMA (style.css) -----
+
+
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    background-color: #000000; /* Negro absoluto para transparencia en acetato */
+
+    color: #00f3ff;           /* Color cian estilo holograma */
+
+    font-family: 'Courier New', Courier, monospace;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    height: 100vh;
+
+    overflow: hidden;
+
+}
+
+
+
+.hologram-container {
+
+    text-align: center;
+
+}
+
+
+
+.avatar-glow {
+
+    width: 150px;
+
+    height: 150px;
+
+    margin: 0 auto 20px auto;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle, rgba(0,243,255,0.8) 0%, rgba(0,0,0,0) 70%);
+
+    box-shadow: 0 0 20px #00f3ff;
+
+    animation: pulse 2s infinite ease-in-out;
+
+}
+
+
+
+@keyframes pulse {
+
+    0% { transform: scale(0.98); opacity: 0.8; }
+
+    50% { transform: scale(1.05); opacity: 1; }
+
+    100% { transform: scale(0.98); opacity: 0.8; }
+
+}
+
+
+
+.text-display {
+
+    max-width: 300px;
+
+    font-size: 1.1rem;
+
+    text-shadow: 0 0 8px #00f3ff;
+
+}
+
+
+
+
+
+----- PASO D: LÓGICA DE CONEXIÓN JAVASCRIPT (app.js) -----
+
+
+
+async function sendMessage() {
+
+    const inputField = document.getElementById("userInput");
+
+    const responseBox = document.getElementById("ai-response");
+
+    const userPrompt = inputField.value;
+
+
+
+    if (!userPrompt) return;
+
+
+
+    responseBox.innerText = "Pensando...";
+
+
+
+    try {
+
+        // Reemplaza 'localhost' por la IP local de tu PC si pruebas desde el celular
+
+        const res = await fetch("http://localhost:8000/chat", {
+
+            method: "POST",
+
+            headers: {
+
+                "Content-Type": "application/json"
+
+            },
+
+            body: JSON.stringify({ prompt: userPrompt })
+
+        });
+
+
+
+        const data = await res.json();
+
+        responseBox.innerText = data.response;
+
+
+
+        // Opcional: Síntesis de Voz en el navegador
+
+        if ('speechSynthesis' in window) {
+
+            const utterance = new SpeechSynthesisUtterance(data.response);
+
+            utterance.lang = 'es-ES';
+
+            window.speechSynthesis.speak(utterance);
+
+        }
+
+
+
+    } catch (error) {
+
+        responseBox.innerText = "Error al conectar con el servidor.";
+
+        console.error("Error:", error);
+
+    }
+
+
+
+    inputField.value = "";
+
+}
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+PARTE 4: INSTRUCCIONES RÁPIDAS DE INSTALACIÓN
+
+--------------------------------------------------------------------------------
+
+
+
+1. Instala las librerías en tu terminal:
+
+   pip install fastapi uvicorn requests pydantic
+
+
+
+2. Ejecuta el servidor backend:
+
+   python main.py
+
+
+
+3. Abre `index.html` en tu navegador o síervelo en tu red local para verlo desde el celular.
+
+4. Coloca el celular debajo de la pirámide de acetato en un entorno oscuro.
+
+================================================================================
