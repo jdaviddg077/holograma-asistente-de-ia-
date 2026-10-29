@@ -1,0 +1,6 @@
+Item,Categoría,Componente / Elemento,Descripción / Especificación,Cantidad,Unidad de Medida
+1,Hardware / Dispositivo,Teléfono Inteligente (Smartphone),Pantalla de proyección para la interfaz holográfica (ej. Redmi Note 14),1,Unidad
+2,Estructura Física,Base y Soporte del Proyector,Estructura soporte para sujetar el dispositivo y la pirámide (Cartón o Madera),1,Unidad
+3,Óptica / Proyección,Pirámide Reflectora,Lámina de acetato transparente cortada a 45° para reflejar la pantalla,1,Unidad
+4,Frontend / UI,Interfaz Web de Usuario,"Animación y visualización del personaje (HTML, CSS, JavaScript)",1,Proyecto
+5,Backend / IA,Servidor Local de IA,"Backend de comunicación y procesamiento (Python, FastAPI, Ollama)",1,Proyecto
