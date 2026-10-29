@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Holograma</title>
+    <link rel="stylesheet" href="animeia.css">
+</head>
+<body style="background-color: black; margin: 0;">
+
+<section style="background-color: rgb(31, 31, 31);">
+    <a href="asistente.html">
+        <button>
+          <div></div>
+          <div></div>
+          <div></div>
+            </button>
+         </a>
+
+<nav>
+   <h1><a href="" style="color: aqua;">INICIO</a></h1>
+   <h1><a href="holograma.html" style="color: aqua;">HOLOGRAMA</a></h1>
+   <h1><a href="" style="color: aqua;">AJUSTES</a></h1>
+   <div class="animation start-home"></div>
+</nav>
+    </section>
+    <div class="box1" style="background-color: rgb(5, 5, 5); height: 100vh; width: 100%; opacity: 85%;">
+        
+    <form id="chat-form">
+        <input id="user-input" placeholder="Escribe lo que quieras :)" class="input" name="text" type="text" style="margin-left: 600px; margin-top: 350px;" required autocomplete="off">
+        <button id="mic-btn" type="button" title="Hablar" style="margin-top: 350px;">🎤</button>
+        <input type="submit" value="Enviar" style="background-color: aqua; cursor: pointer; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold;">
+        </form>
+
+        <div>
+            <img src="asistente.gif" alt="Asistente Holograma" class="video1">
+        </div>
+        <!-- Contenedor para mostrar la respuesta de la IA -->
+        <h1 style="color: aliceblue; margin-left: 600px; font-family: sans-serif; font-size: 1.2rem; max-width: 600px; margin-top: 20px;">
+            Respuesta: <span id="ai-response" style="color: aqua;">Esperando tu mensaje...</span>
+        </h1>
+
+    </div>
+
+    <script src=".js/app3.js"></script>
+</body>
+</html>
