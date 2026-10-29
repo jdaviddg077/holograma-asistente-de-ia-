@@ -1,0 +1,110 @@
+button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    background: transparent;
+    gap: .65rem;
+    cursor: pointer;
+}
+
+button > div {
+    background: rgb(1, 238, 255);
+    height: 2px;
+    width: 100%;
+    border-radius: 5px;
+    transition: all .5s;
+    transform-origin: left;
+}
+
+button:hover div:first-child {
+    transform: rotate(45deg);
+}
+
+button:hover div:nth-child(2) {
+    opacity: 0;
+}
+
+button:hover div:last-child {
+    transform: rotate(-45deg);
+}
+section{
+    background-color: black;
+    height:100% ;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    font-family: sans-serif;
+}
+
+nav{
+    background-color: rgb(37, 37, 37);
+    height:1000px ;
+    width: 300px;
+    margin-left: 0px ;
+    margin-top: -21px;
+    text-align: center;
+}
+
+.input {
+    background-color: rgb(26, 26, 26);
+    max-width: 1000px;
+    width: 800px;
+    height: 40px;
+    padding: 10;
+    border: 2px solid white;
+    border-radius: 5px;
+    position:relative;
+    z-index: 1;
+}
+.input:focus {
+    color: rgb(0, 255, 255);
+    background-color: #212121;
+    outline-color: rgb(0, 255, 255);
+    box-shadow: -3px -3px 15px rgb(0, 255, 255);
+    transition: .1s;
+    transition-property: box-shadow;
+}
+#mic-btn {
+    display: inline-block;
+    width: 44px;
+    height: 40px;
+    margin-left: 8px;
+    border: 2px solid aqua;
+    border-radius: 50%;
+    background-color: rgb(26, 26, 26);
+    color: aqua;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+#mic-btn:hover {
+    box-shadow: 0 0 10px rgb(0, 255, 255);
+}
+
+#mic-btn.listening {
+    background-color: rgb(0, 255, 255);
+    color: black;
+    box-shadow: 0 0 20px rgb(0, 255, 255);
+    animation: pulse-mic 1s infinite;
+}
+
+@keyframes pulse-mic {
+    0%   { box-shadow: 0 0 10px rgb(0, 255, 255); }
+    50%  { box-shadow: 0 0 25px rgb(0, 255, 255); }
+    100% { box-shadow: 0 0 10px rgb(0, 255, 255); }
+}
+    
+.video1{
+    position: relative;
+    z-index: -1;
+    height: 300px;
+    width: 400px;
+    margin-top:-300px ;
+    margin-left: 800px;
+    display: flex;
+    opacity: 80%;
+}
